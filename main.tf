@@ -1,10 +1,10 @@
-# Configure the Microsoft Azure Provider.
+
 provider "azurerm" {
   features {}
 }
 
 
-# Azure Provider source and version being used.
+
 terraform {
   required_providers {
     azurerm = {
@@ -128,7 +128,6 @@ resource "azurerm_api_management" "apim" {
 }
 
 
-# Our general API definition, here we could include a nice swagger file or something
 resource "azurerm_api_management_api" "apim_api" {
   name                  = "httpexample-api"
   resource_group_name   = azurerm_resource_group.resource_group.name
@@ -150,7 +149,7 @@ resource "azurerm_api_management_api" "apim_api" {
 }
 
 
-# A seperate backend definition, we need this to set our authorisation code for our azure function
+
 resource "azurerm_api_management_backend" "apim_backend" {
   name                = "${var.project}apim_backend"
   resource_group_name = azurerm_resource_group.resource_group.name
@@ -160,14 +159,13 @@ resource "azurerm_api_management_backend" "apim_backend" {
 }
 
 
-# We use a policy on our API to set the backend, which has the configuration for the authentication code
+
 resource "azurerm_api_management_api_policy" "apim_policy" {
   api_name            = azurerm_api_management_api.apim_api.name
   resource_group_name = azurerm_resource_group.resource_group.name
   api_management_name = azurerm_api_management.apim.name
 
-  # Put any policy block here, has to be XML :(
-  # More options: https://docs.microsoft.com/en-us/azure/api-management/api-management-policies
+ 
   xml_content = <<XML
     <policies>
         <inbound>

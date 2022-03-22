@@ -7,7 +7,7 @@ variable "project" {
 variable "adminmail" {
   type        = string
   description = "Admin Email id"
-  default     = "abedare@nasuni.com"
+  default     = "abcd@gmail.com"
 }
 
 variable "output_path" {
