@@ -1,0 +1,21 @@
+
+openapi: '3.0.2'
+info:
+  title: Exampletf API
+  version: '1.0'
+servers:
+  - url: https://httpazuretf-function-app.azurewebsites.net/example
+paths:    
+  /HttpExample:
+    description: "This is HTTP trigger get method"
+    get:
+      parameters:
+        - name: name
+          schema: 
+            type: string
+          in: query
+          required: false
+      responses:
+        '200':
+          description: OK
+
